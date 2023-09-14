@@ -1,10 +1,10 @@
 #include <cs50.h>
 #include <stdio.h>
 
-void print_left_pyramid (int row, int height);
+void print_left_pyramid(int row, int height);
 void print_right_pyramid(int row);
 
-int main (void)
+int main(void)
 {
     int n;
     do
@@ -22,18 +22,18 @@ int main (void)
     }
 }
 
-void print_left_pyramid (int row, int height)
+void print_left_pyramid(int row, int height)
 {
     for (int i = 0; i < height; i++)
     {
         if (i >= (height - row - 1))
-            {
-                printf("#");
-            }
-            else
-            {
-                printf(" ");
-            }
+        {
+            printf("#");
+        }
+        else
+        {
+            printf(" ");
+        }
     }
 }
 
