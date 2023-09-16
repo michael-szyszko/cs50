@@ -1,5 +1,5 @@
-#include <ctype.h>
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -40,15 +40,14 @@ int compute_score(string word)
     for (int i = 0; i < n; i++)
     {
 
-
         char letter = word[i];
         if (islower(letter))
         {
-            score += POINTS[(int)word[i] - 97];
-
+            score += POINTS[(int) word[i] - 97];
         }
-        else if(isupper(letter)) {
-            score += POINTS[(int)word[i] - 65];
+        else if (isupper(letter))
+        {
+            score += POINTS[(int) word[i] - 65];
         }
     }
     return score;
