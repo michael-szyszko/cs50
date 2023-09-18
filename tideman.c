@@ -213,8 +213,12 @@ bool cycle (int pair_num)
 {
     if (pair_num == 0)
     {
-        if locked[pairs[pair_num]]
+        if (locked[pairs[pair_num].winner][1] == true)
+        {
+
+        }
     }
+    return false;
 }
 
 // Print the winner of the election
