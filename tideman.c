@@ -186,11 +186,6 @@ void sort_pairs(void)
             }
         }
     }
-    for (int i = 0; i < pair_count; i++)
-    {
-        printf("pair %i, winner: %i, loser: %i", i, pairs[i].winner, pairs[i].loser);
-        printf("----------margin of victory%i\n", preferences[pairs[i].winner][pairs[i].loser]);
-    }
     return;
 }
 
@@ -208,9 +203,18 @@ void lock_pairs(void)
     for (int i = 0; i < pair_count; i++)
     {
         //todo: check for cycle
+
         locked[pairs[i].winner][pairs[i].loser] = true;
     }
     return;
+}
+
+bool cycle (int pair_num)
+{
+    if (pair_num == 0)
+    {
+        if locked[pairs[pair_num]]
+    }
 }
 
 // Print the winner of the election
