@@ -180,17 +180,17 @@ void sort_pairs(void)
         for (int j = 0; j < pair_count - i - 1; j++)
         {
             //swap if the current pair has greater strength of victory
-            if (preferences[pairs[j].winner][pairs[j].loser] > preferences[pairs[j+1].winner][pairs[j+1].loser])
+            if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j+1].winner][pairs[j+1].loser])
             {
                 swap(&pairs[j], &pairs[j+1]);
             }
         }
     }
-    //for (int i = 0; i < pair_count; i++)
-    //{
-    //    printf("pair %i, winner: %i, loser: %i", i, pairs[i].winner, pairs[i].loser);
-    //    printf("----------margin of victory%i\n", preferences[pairs[i].winner][pairs[i].loser]);
-    //}
+    for (int i = 0; i < pair_count; i++)
+    {
+        printf("pair %i, winner: %i, loser: %i", i, pairs[i].winner, pairs[i].loser);
+        printf("----------margin of victory%i\n", preferences[pairs[i].winner][pairs[i].loser]);
+    }
     return;
 }
 
