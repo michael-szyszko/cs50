@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Bubble sort has an omega of (n), but a big O (n^2). Of the 3 sorts, sort 1 was fastest to sort the the sorted file, and the slowest the sort a reversed file (a bubble sorts worst case scenario).
+
+sort2 uses: merge sort
+
+How do you know?: Merge sort has a O(n log n) in worse case scenarios. Of the 3 sorts, sort 2 was fastest on reversed sort and random sort.
+
+sort3 uses: selection sort
+
+How do you know?: Sorted and reversed sorts took approximately the same amount of time consistent with its theta (n^2)
