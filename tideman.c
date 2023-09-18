@@ -34,6 +34,8 @@ void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
 
+void swap (pair* p1, pair* p2);
+
 int main(int argc, string argv[])
 {
     // Check for invalid usage
@@ -180,9 +182,7 @@ void sort_pairs(void)
             //swap if the current pair has greater strength of victory
             if (preferences[pairs[j].winner][pairs[j].loser] > preferences[pairs[j+1].winner][pairs[j+1].loser])
             {
-                pair swap = pairs[j];
-                pairs[j] = pairs[j + 1];
-                pairs[j + 1] = swap;
+                swap(&pairs[j], &pairs[j+1]);
             }
         }
     }
@@ -192,6 +192,13 @@ void sort_pairs(void)
     //    printf("----------margin of victory%i\n", preferences[pairs[i].winner][pairs[i].loser]);
     //}
     return;
+}
+
+void swap (pair* p1, pair* p2)
+{
+    pair temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
