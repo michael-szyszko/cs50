@@ -221,7 +221,7 @@ bool cycle (int winner, int loser)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (locked[winner][i])
+        if (locked[i][winner])
         {
             if (cycle(i, loser))
             {
