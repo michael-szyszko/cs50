@@ -223,7 +223,7 @@ bool cycle (int winner, int loser)
     {
         if (locked[i][winner])
         {
-            if (cycle(i, winner))
+            if (cycle(i, loser))
             {
                 return true;
             }
