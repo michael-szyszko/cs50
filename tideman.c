@@ -203,7 +203,7 @@ void lock_pairs(void)
     // locked[i][j] means i is locked in over j
     for (int i = 0; i < pair_count; i++)
     {
-        if (true == cycle(pairs[i].winner, pairs[i].loser))
+        if (!cycle(pairs[i].winner, pairs[i].loser))
         {
             locked[pairs[i].winner][pairs[i].loser] = true;
         }
