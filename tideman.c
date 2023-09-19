@@ -214,7 +214,7 @@ void lock_pairs(void)
 // move up the graph by closest connections recursively. If the loser is a winner in the graph already connectet then this would create a cycle.
 bool cycle (int winner, int loser)
 {
-    if (locked[winner][loser])
+    if (locked[loser][winner])
     {
         return true;
     }
@@ -223,7 +223,7 @@ bool cycle (int winner, int loser)
     {
         if (locked[i][winner])
         {
-            if (cycle(loser, i))
+            if (cycle(i, loser))
             {
                 return true;
             }
