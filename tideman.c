@@ -16,8 +16,7 @@ typedef struct
 {
     int winner;
     int loser;
-}
-pair;
+} pair;
 
 // Array of candidates
 string candidates[MAX];
@@ -34,8 +33,8 @@ void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
 
-void swap (pair* p1, pair* p2);
-bool cycle (int winner, int loser);
+void swap(pair *p1, pair *p2);
+bool cycle(int winner, int loser);
 
 int main(int argc, string argv[])
 {
@@ -119,27 +118,13 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // preferences[i][j] is number of voters who prefer i over j
-    //int preferences[MAX][MAX];
+    // int preferences[MAX][MAX];
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = i + 1; j < candidate_count; j++)
         {
             preferences[ranks[i]][ranks[j]] += 1;
-            printf("%i\n", preferences[ranks[i]][ranks[j]]);
         }
-        // ranks[i] contains indices of candidates in order of preference, e.g., ranks[0] will contain the voters first choice while rank[candidate_count] contains the index of the last choice
-        // Alice Bob Charlie, ranks {1, 0, 2} (2+1 =3)
-        // preferences[0][0] = 0, preferences [0][1] = 0, preferences[0][2] = +=1
-        // preferences[1][0] = +=1, preferences [1][1] = 0, preferences[1][2] = +1
-        // preferences[2][0] = 0, preferences [2][1] = 0, preferences[2][2] = 0
-
-        // Alice Bob Charlie, Daniel ranks {1, 0, 3, 2} (3+2+1=6)
-        // preferences[0][0] = 0, preferences [0][1] = 0, preferences[0][2] = +=1, preferences[0][3] = +=1
-        // preferences[1][0] = +1, preferences [1][1] = 0, preferences[1][2] = +=1, preferences[1][3] = +=1
-        // preferences[2][0] = 0, preferences [2][1] = 0, preferences[2][2] = 0, preferences[2][3] = 0
-        // preferences[3][0] = 0, preferences [3][1] = 0, preferences[3][2] = +=1, preferences[3][3] = 0
-
-        // Alice Bob Charlie, Daniel, Evan ranks {1, 0, 3, 2, 4} (4+3+2+1=10)
     }
     return;
 }
@@ -151,11 +136,9 @@ void add_pairs(void)
     {
         for (int j = i + 1; j < candidate_count; j++)
         {
-            //some candidates will be tied between eachother, and when i == j, the value is always 0
+            // some candidates will be tied between eachother, and when i == j, the value is always 0
             if (preferences[i][j] != preferences[j][i])
             {
-                //printf("preferences[%i][%i]:%i preferences[%i][%i]: %i\n", i,j,preferences[i][j],j,i,preferences[j][i]);
-                // copy and pasted assignment, opportunity to refactor here
                 if (preferences[i][j] > preferences[j][i])
                 {
                     pairs[pair_count].winner = i;
@@ -180,17 +163,17 @@ void sort_pairs(void)
     {
         for (int j = 0; j < pair_count - i - 1; j++)
         {
-            //swap if the current pair has greater strength of victory
-            if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j+1].winner][pairs[j+1].loser])
+            // swap if the current pair has greater strength of victory
+            if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
             {
-                swap(&pairs[j], &pairs[j+1]);
+                swap(&pairs[j], &pairs[j + 1]);
             }
         }
     }
     return;
 }
 
-void swap (pair* p1, pair* p2)
+void swap(pair *p1, pair *p2)
 {
     pair temp = *p1;
     *p1 = *p2;
@@ -211,8 +194,9 @@ void lock_pairs(void)
     return;
 }
 
-// move up the graph by closest connections recursively. If the loser is a winner in the graph already connectet then this would create a cycle.
-bool cycle (int winner, int loser)
+// move up the notional graph by closest connections recursively. If the loser is a winner in the graph already from a connection
+// this function will return true;
+bool cycle(int winner, int loser)
 {
     if (locked[loser][winner])
     {
@@ -240,13 +224,13 @@ void print_winner(void)
         bool edges = false;
         for (int j = 0; j < candidate_count; j++)
         {
-            //if there are any edges on the candidate, they are not the winner
-            if(locked[j][i] == true)
+            // if there are any edges on the candidate, they are not the winner
+            if (locked[j][i] == true)
             {
                 edges = true;
             }
         }
-        //the candidate has no edges meaning they are the winner
+        // the candidate has no edges meaning they are the winner
         if (edges == false)
         {
             printf("%s\n", candidates[i]);
