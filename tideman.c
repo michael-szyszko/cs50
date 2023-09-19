@@ -35,6 +35,7 @@ void lock_pairs(void);
 void print_winner(void);
 
 void swap (pair* p1, pair* p2);
+bool cycle (int winner, int loser);
 
 int main(int argc, string argv[])
 {
@@ -202,9 +203,10 @@ void lock_pairs(void)
     // locked[i][j] means i is locked in over j
     for (int i = 0; i < pair_count; i++)
     {
-        //todo: check for cycle
-
-        locked[pairs[i].winner][pairs[i].loser] = true;
+        if (!cycle(pairs[i].winner, pairs[i].loser))
+        {
+            locked[pairs[i].winner][pairs[i].loser] = true;
+        }
     }
     return;
 }
@@ -216,6 +218,7 @@ bool cycle (int winner, int loser)
     {
         return true;
     }
+
     for (int i = 0; i < candidate_count; i++)
     {
         if (locked[winner][candidate_count])
@@ -226,7 +229,6 @@ bool cycle (int winner, int loser)
             }
         }
     }
-
     return false;
 }
 
