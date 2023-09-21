@@ -39,14 +39,15 @@ int main(int argc, char *argv[])
     {
         fwrite(header, 1, HEADER_SIZE, output);
     }
-    else {
+    else
+    {
         printf("failed to read from file\n");
         // Close files
         fclose(input);
         fclose(output);
         return 1;
     }
-    //uint8_t (unisgned), 8 bits, int16_t(signed) 16 bits or 2 bytes
+
     int16_t data;
 
     while (fread(&data, sizeof(int16_t), 1, input))
@@ -60,4 +61,3 @@ int main(int argc, char *argv[])
     fclose(input);
     fclose(output);
 }
-
