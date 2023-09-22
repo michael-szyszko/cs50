@@ -76,11 +76,11 @@ RGBTRIPLE get_blurred_pixel(int height, int width, int row, int col, RGBTRIPLE i
     int summed_green = 0;
     int summed_red = 0;
 
-    for (int r = row - 1; r < row + 1; r++)
+    for (int r = row - 1; r < row + 2; r++)
     {
         if (r >= 0 && row < height)
         {
-            for (int c = col - 1; c < col + 1; c++)
+            for (int c = col - 1; c < col + 2; c++)
             {
                 if (c >= 0 && col < width)
                 {
