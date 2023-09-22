@@ -72,9 +72,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 RGBTRIPLE get_blurred_pixel(int height, int width, int row, int col, RGBTRIPLE image[height][width])
 {
     int elements = 0;
-    int summed_blue = 0;
-    int summed_green = 0;
-    int summed_red = 0;
+    double summed_blue = 0;
+    double summed_green = 0;
+    double summed_red = 0;
 
     for (int r = row - 1; r < row + 2; r++)
     {
@@ -92,7 +92,7 @@ RGBTRIPLE get_blurred_pixel(int height, int width, int row, int col, RGBTRIPLE i
             }
         }
     }
-    return (RGBTRIPLE) {.rgbtBlue = summed_blue / elements, .rgbtGreen = summed_green / elements, .rgbtRed = summed_red / elements };
+    return (RGBTRIPLE) {.rgbtBlue = round(summed_blue / elements), .rgbtGreen = round(summed_green / elements), .rgbtRed = round(summed_red / elements) };
 }
 
 RGBTRIPLE get_edged_pixel(int height, int width, int row, int col, RGBTRIPLE image[height][width])
