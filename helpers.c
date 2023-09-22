@@ -152,7 +152,7 @@ RGBTRIPLE get_edged_pixel(int height, int width, int row, int col, RGBTRIPLE ima
 
 int get_GxGyCalculation(int gx, int gy)
 {
-    double GxGy = sqrt((gx * gx) + (gy * gy));
+    double GxGy = round(sqrt((gx * gx) + (gy * gy)));
     if (GxGy > 255)
     {
         GxGy = 255;
