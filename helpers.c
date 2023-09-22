@@ -129,11 +129,11 @@ RGBTRIPLE get_edged_pixel(int height, int width, int row, int col, RGBTRIPLE ima
 
     for (int r = row - 1; r < row + 2; r++)
     {
-        if (r >= 0 && row < height)
+        if (r >= 0 && r < height)
         {
             for (int c = col - 1; c < col + 2; c++)
             {
-                if (c >= 0 && col < width)
+                if (c >= 0 && c < width)
                 {
                     GxBlue += GxMultiplier[r - row + 1][c - col + 1] * image[r][c].rgbtBlue;
                     GxGreen += GxMultiplier[r - row + 1][c - col + 1] * image[r][c].rgbtGreen;
