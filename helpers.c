@@ -82,7 +82,7 @@ RGBTRIPLE get_blurred_pixel(int height, int width, int row, int col, RGBTRIPLE i
         {
             for (int c = col - 1; c < col + 2; c++)
             {
-                if (c >= 0 && col < width)
+                if (c >= 0 && c < width)
                 {
                     elements += 1;
                     summed_blue += image[r][c].rgbtBlue;
