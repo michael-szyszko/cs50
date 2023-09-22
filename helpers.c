@@ -8,6 +8,8 @@ RGBTRIPLE get_blurred_pixel(int height, int width, int row, int col, RGBTRIPLE i
 RGBTRIPLE get_edged_pixel(int height, int width, int row, int col, RGBTRIPLE image[height][width]);
 int get_GxGyCalculation(int gx, int gy);
 
+int GxMultiplier[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+int GyMultiplier[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -98,34 +100,35 @@ RGBTRIPLE get_blurred_pixel(int height, int width, int row, int col, RGBTRIPLE i
 RGBTRIPLE get_edged_pixel(int height, int width, int row, int col, RGBTRIPLE image[height][width])
 {
 
-
+    //int GxMultiplier[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+    //int GyMultiplier[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
     int GxBlue = 0;
     int GxGreen = 0;
     int GxRed = 0;
     int GyBlue = 0;
     int GyGreen = 0;
     int GyRed = 0;
-    int GxMultiplier[3][3];
-    GxMultiplier[0][0] = -1;
-    GxMultiplier[0][1] = 0;
-    GxMultiplier[0][2] = 1;
-    GxMultiplier[1][0] = -2;
-    GxMultiplier[1][1] = 0;
-    GxMultiplier[1][2] = 2;
-    GxMultiplier[2][0] = -1;
-    GxMultiplier[2][1] = 0;
-    GxMultiplier[2][2] = 1;
+    //int GxMultiplier[3][3];
+    //GxMultiplier[0][0] = -1;
+    //GxMultiplier[0][1] = 0;
+    //GxMultiplier[0][2] = 1;
+    //GxMultiplier[1][0] = -2;
+    //GxMultiplier[1][1] = 0;
+    //GxMultiplier[1][2] = 2;
+    //GxMultiplier[2][0] = -1;
+    //GxMultiplier[2][1] = 0;
+    //GxMultiplier[2][2] = 1;
 
-    int GyMultiplier[3][3];
-    GyMultiplier[0][0] = -1;
-    GyMultiplier[0][1] = -2;
-    GyMultiplier[0][2] = -1;
-    GyMultiplier[1][0] = 0;
-    GyMultiplier[1][1] = 0;
-    GyMultiplier[1][2] = 0;
-    GyMultiplier[2][0] = 1;
-    GyMultiplier[2][1] = 2;
-    GyMultiplier[2][2] = 1;
+    //int GyMultiplier[3][3];
+    //GyMultiplier[0][0] = -1;
+    //GyMultiplier[0][1] = -2;
+    //GyMultiplier[0][2] = -1;
+    //GyMultiplier[1][0] = 0;
+    //GyMultiplier[1][1] = 0;
+    //GyMultiplier[1][2] = 0;
+    //GyMultiplier[2][0] = 1;
+    //GyMultiplier[2][1] = 2;
+    //GyMultiplier[2][2] = 1;
 
     for (int r = row - 1; r < row + 2; r++)
     {
