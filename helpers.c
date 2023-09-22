@@ -31,7 +31,11 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int c = 0; c < width / 2; c++)
         {
-            swap(&image[r][c], &image[r][width - c]);
+            RGBTRIPLE temp = image[r][c];
+            image[r][c] = image[r][width - c];
+            image[r][width - c] = temp;
+
+            //swap(&image[r][c], &image[r][width - c]);
         }
     }
     return;
