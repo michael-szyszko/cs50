@@ -34,8 +34,6 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             RGBTRIPLE temp = image[r][c];
             image[r][c] = image[r][width - c];
             image[r][width - c] = temp;
-
-            //swap(&image[r][c], &image[r][width - c]);
         }
     }
     return;
