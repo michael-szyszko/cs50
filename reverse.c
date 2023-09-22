@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     //88200 blocks
     BYTE block[block_size];
     long start_position = ftell(inptr);
-
+    printf("ftell: %li - blocks: %i\n", ftell(inptr), 0);
     fseek (inptr, -block_size, SEEK_END);
 
     printf("%i - block_size, ftell = %li \n", block_size, ftell(inptr));
@@ -70,12 +70,15 @@ int main(int argc, char *argv[])
         fwrite(block, sizeof(BYTE) * block_size, 1, outptr);
         fseek (inptr, -block_size * blocks, SEEK_END);
         blocks++;
+        //if ((ftell(inptr)) > start_position - 10 && ftell(inptr) < start_position + 10)
+       // {
+        //printf("%i - block_size  %i-block, ftell = %li \n", block_size, blocks, ftell(inptr));
+      //  }
       //  for (int i = 0; i < block_size; i++)
       //  {
       //      printf("%i - block[%i]\n", block[i], i);
        // }
         //printf("-----------end of block------------%i\n", blocks);
-        fwrite(block, sizeof(BYTE) * block_size, 1, outptr);
     }
 
     fclose(inptr);
