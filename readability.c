@@ -42,15 +42,15 @@ int main(void)
     int grade = round((0.0588 * avg_num_letters_per_100_words) - (0.296 * avg_num_sentences_per_100_words) - 15.8);
     if (grade > 1 && grade < 16)
     {
-        printf("Grade %i\n", MAX_GRADE);
+        printf("Grade %i\n", grade);
     }
     else if (grade >= MAX_GRADE)
     {
-        printf("Grade %i+", MAX_GRADE);
+        printf("Grade %i+\n", MAX_GRADE);
     }
     else
     {
-        printf("Before Grade 1");
+        printf("Before Grade 1\n");
     }
 
 }
