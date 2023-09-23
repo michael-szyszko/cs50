@@ -35,7 +35,6 @@ int main(void)
             checksum2 += (multiplied % 10) + (multiplied / 10);
         }
     }
-    printf("checksum 1: %i, checksum2: %i", checksum1, checksum2);
 
     if ((checksum1 + checksum2) % 10 != 0)
     {
@@ -53,5 +52,8 @@ int main(void)
     {
         printf("MASTERCARD\n");
     }
+    else
+    {
+        printf("INVALID\n");
+    }
 }
-//
