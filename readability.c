@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
+int const MAX_GRADE = 16;
 
 int main(void)
 {
@@ -39,5 +40,17 @@ int main(void)
     //printf("1st: %lf, 2nd: %lf", avg_num_letters_per_100_words, avg_num_sentences_per_100_words);
 
     int grade = round((0.0588 * avg_num_letters_per_100_words) - (0.296 * avg_num_sentences_per_100_words) - 15.8);
-    printf("Grade %i\n", grade);
+    if (grade > 1 && grade < 16)
+    {
+        printf("Grade %i\n", MAX_GRADE);
+    }
+    else if (grade >= MAX_GRADE)
+    {
+        printf("Grade %i+", MAX_GRADE);
+    }
+    else
+    {
+        printf("Before Grade 1");
+    }
+
 }
