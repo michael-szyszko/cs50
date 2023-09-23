@@ -89,6 +89,7 @@ bool load(const char *dictionary)
         {
             unload();
             printf("memory error");
+            fclose(inptr);
             return false;
         }
 
@@ -107,6 +108,7 @@ bool load(const char *dictionary)
             word->next = temp_ptr;
         }
     }
+    fclose(inptr);
     return true;
 }
 
