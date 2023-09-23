@@ -66,10 +66,11 @@ int main(int argc, char *argv[])
     int blocks = 1;
     while (ftell(inptr) != start_position)
     {
+        blocks++;
         fread(block, sizeof(BYTE) * block_size, 1, inptr);
         fwrite(block, sizeof(BYTE) * block_size, 1, outptr);
         fseek (inptr, -block_size * blocks, SEEK_END);
-        blocks++;
+
         //if ((ftell(inptr)) > start_position - 10 && ftell(inptr) < start_position + 10)
        // {
         //printf("%i - block_size  %i-block, ftell = %li \n", block_size, blocks, ftell(inptr));
