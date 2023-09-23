@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 
     printf("%i - block_size, ftell = %li \n", block_size, ftell(inptr));
     int blocks = 1;
-    while (ftell(inptr) != start_position)
+    while (ftell(inptr) > start_position - 1)
     {
         blocks++;
         fread(block, sizeof(BYTE) * block_size, 1, inptr);
