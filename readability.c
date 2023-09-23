@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <ctype.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -31,10 +32,12 @@ int main(void)
         }
     }
 
-    printf("%i letters\n%i words\n%i sentences\n", letters, words, sentences);
+    //printf("%i letters\n%i words\n%i sentences\n", letters, words, sentences);
 
-    double avg_num_letters_per_100_words = letters / words * 100.0;
-    double avg_num_sentences_per_100_words = sentences / words * 100;
-    int grade = 0.0588 * avg_num_letters_per_100_words - 0.296 * avg_num_sentences_per_100_words - 15.8;
+    double avg_num_letters_per_100_words = (double)letters / words * 100.0;
+    double avg_num_sentences_per_100_words = (double)sentences / words * 100.0;
+    //printf("1st: %lf, 2nd: %lf", avg_num_letters_per_100_words, avg_num_sentences_per_100_words);
+
+    int grade = round((0.0588 * avg_num_letters_per_100_words) - (0.296 * avg_num_sentences_per_100_words) - 15.8);
     printf("Grade %i\n", grade);
 }
