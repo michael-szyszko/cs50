@@ -55,31 +55,20 @@ int main(int argc, char *argv[])
     int block_size = get_block_size(wh);
 
     // Write reversed audio to file
-    // TODO #8
-    //88200 blocks
     BYTE block[block_size];
     long start_position = ftell(inptr);
-    printf("ftell: %li - blocks: %i\n", ftell(inptr), 0);
-    fseek (inptr, -block_size, SEEK_END);
 
-    printf("%i - block_size, ftell = %li \n", block_size, ftell(inptr));
+    // For the purposes of transvesing the audio file, the variable blocks will determine how far fseek() will iterate
     int blocks = 1;
+    fseek(inptr, -block_size * blocks, SEEK_END);
+
+    // Read the audio file backwards and write blocks of audio data into the new file
     while (ftell(inptr) > start_position - 1)
     {
         blocks++;
         fread(block, sizeof(BYTE) * block_size, 1, inptr);
         fwrite(block, sizeof(BYTE) * block_size, 1, outptr);
-        fseek (inptr, -block_size * blocks, SEEK_END);
-
-        //if ((ftell(inptr)) > start_position - 10 && ftell(inptr) < start_position + 10)
-       // {
-        //printf("%i - block_size  %i-block, ftell = %li \n", block_size, blocks, ftell(inptr));
-      //  }
-      //  for (int i = 0; i < block_size; i++)
-      //  {
-      //      printf("%i - block[%i]\n", block[i], i);
-       // }
-        //printf("-----------end of block------------%i\n", blocks);
+        fseek(inptr, -block_size * blocks, SEEK_END);
     }
 
     fclose(inptr);
