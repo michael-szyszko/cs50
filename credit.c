@@ -13,10 +13,10 @@ int main(void)
     // therefore case with credit card starting with 0 is being ignored
 
     long number = get_long("Number: ");
-    while(number > 0)
+    while (number > 0)
     {
         // stores the number backwards
-        digits[digit_count] = (int)(number % 10);
+        digits[digit_count] = (int) (number % 10);
         number = number / 10;
         digit_count += 1;
     }
@@ -35,7 +35,6 @@ int main(void)
             checksum2 += (multiplied % 10) + (multiplied / 10);
         }
     }
-    //printf("checksum: %i, first digit: %i, second digit: %i", checksum1+checksum2, )
 
     if ((checksum1 + checksum2) % 10 != 0)
     {
@@ -49,7 +48,9 @@ int main(void)
     {
         printf("VISA\n");
     }
-    else if (digits[digit_count - 1] == 5 && (digits[digit_count - 2] == 1 || digits[digit_count - 2] == 2 || digits[digit_count - 2] == 3 || digits[digit_count - 2] == 4 || digits[digit_count - 2] == 5))
+    else if (digits[digit_count - 1] == 5 &&
+             (digits[digit_count - 2] == 1 || digits[digit_count - 2] == 2 || digits[digit_count - 2] == 3 ||
+              digits[digit_count - 2] == 4 || digits[digit_count - 2] == 5))
     {
         printf("MASTERCARD\n");
     }
