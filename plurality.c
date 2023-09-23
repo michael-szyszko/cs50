@@ -10,8 +10,7 @@ typedef struct
 {
     string name;
     int votes;
-}
-candidate;
+} candidate;
 
 // Array of candidates
 candidate candidates[MAX];
@@ -82,7 +81,7 @@ void print_winner(void)
 {
     int highest_vote_count = 0;
 
-    //identify winning vote count
+    // identify winning vote count
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes > highest_vote_count)
