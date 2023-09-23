@@ -18,8 +18,8 @@ typedef struct node
 
 void free_nodes(node *words);
 
-// Hash table setup for 26 * 26 for aa to zz hash table
-const unsigned int N = 676;
+// Hash table setup for 26 * 26 for aa to zz hash table, 676
+const unsigned int N = 17576;
 
 //
 double WORD_COUNT;
@@ -51,13 +51,18 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    if (strlen(word) == 1)
+    int length = strlen(word);
+    if (length == 1)
     {
         return toupper(word[0]) - 'A';
     }
-    else
+    else if (length == 2)
     {
         return toupper(word[1]) - 'A' + (toupper(word[0]) - 'A') * 26;
+    }
+    else
+    {
+        return toupper(word[1]) - 'A' + (toupper(word[0]) - 'A') * 26 + (toupper(word[0]) - 'A') * 676;
     }
 }
 
