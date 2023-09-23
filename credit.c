@@ -35,12 +35,13 @@ int main(void)
             checksum2 += (multiplied % 10) + (multiplied / 10);
         }
     }
+    //printf("checksum: %i, first digit: %i, second digit: %i", checksum1+checksum2, )
 
     if ((checksum1 + checksum2) % 10 != 0)
     {
         printf("INVALID\n");
     }
-    else if (digit_count == 15 && digits[digit_count] == 3 && (digits[digit_count - 1] == 4 || digits[digit_count - 1] == 7))
+    else if (digit_count == 15 && digits[digit_count - 1] == 3 && (digits[digit_count - 2] == 4 || digits[digit_count - 2] == 7))
     {
         printf("AMEX\n");
     }
@@ -48,7 +49,7 @@ int main(void)
     {
         printf("VISA\n");
     }
-    else if (digits[digit_count] == 5 && (digits[digit_count - 1] == 1 || digits[digit_count - 1] == 2 || digits[digit_count - 1] == 3 || digits[digit_count - 1] == 4 || digits[digit_count - 1] == 5))
+    else if (digits[digit_count - 1] == 5 && (digits[digit_count - 2] == 1 || digits[digit_count - 2] == 2 || digits[digit_count - 2] == 3 || digits[digit_count - 2] == 4 || digits[digit_count - 2] == 5))
     {
         printf("MASTERCARD\n");
     }
