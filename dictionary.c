@@ -14,8 +14,7 @@ typedef struct node
 {
     char word[LENGTH + 1];
     struct node *next;
-}
-node;
+} node;
 
 void free_nodes(node *words);
 
@@ -44,7 +43,6 @@ bool check(const char *word)
         {
             dict_word = dict_word->next;
         }
-
     }
 
     return false;
@@ -74,7 +72,7 @@ bool load(const char *dictionary)
         return 1;
     }
 
-    //set all points to null in hash table
+    // set all points to null in hash table
     for (int i = 0; i < LENGTH; i++)
     {
         table[i] = NULL;
@@ -97,7 +95,8 @@ bool load(const char *dictionary)
         strcpy(word->word, temp);
         WORD_COUNT += 1;
 
-        if (table[hash_value] == NULL){
+        if (table[hash_value] == NULL)
+        {
             table[hash_value] = word;
             word->next = NULL;
         }
