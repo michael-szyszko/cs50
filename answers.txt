@@ -16,5 +16,6 @@ Portugual and Switzerland predictions were most erroneous for victors with incre
 Similarly the predictions for France and and Croatia were most erroneous for losers as those were the finalists in the actual tournament.
 
 Suppose you're charged a fee for each second of compute time your program uses.
-I suppose 1 million since I make more money for more compute time. Also with fewer runs, because Russia and Japan have such low ELO rankings they typically do not see any tournament wins with 100k or fewer simulations.
+I suppose 1 million since I make more money for more compute time.
+Also with fewer runs, because Russia and Japan have such low ELO rankings they typically do not see any tournament wins with 100k or fewer simulations.
 
