@@ -1,0 +1,18 @@
+Times:
+
+10 simulations: 0m0.021s
+100 simulations: 0m0.033s
+1000 simulations: 0m0.041s
+10000 simulations: 0m0.086s
+100000 simulations: 0m0.652s
+1000000 simulations: 0m6.607s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+
+With a small number of simulations Portugual and Switzerland predictions were most erroneous for victors with increased number of simulations as those teams were eliminated early.Similarly the predictions for France and and Croatia were most erroneous for losers as those were the finalists in the actual tournament.
+
+Suppose you're charged a fee for each second of compute time your program uses. After how many simulations would you call the predictions "good enough"?:
+
+It seems like the predictions stabalized after about 1000 runs and seems to be a good value based on run time, the results stabalize and isn't signficantly more running time than 100 and 10 times.
