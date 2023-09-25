@@ -26,11 +26,11 @@ digits.reverse()
 
 if (check_sum_1 + check_sum_2) % 10 != 0:
     print("INVALID")
-elif digit_count == 15 and digits[0] == 3 and (digits[1] in [4,7]):
+elif digit_count == 15 and digits[0] == 3 and (digits[1] in [4, 7]):
     print("AMEX")
-elif digits[0] == 4 and (digit_count in [13,16]):
+elif digits[0] == 4 and (digit_count in [13, 16]):
     print("VISA")
-elif digits[0] == 5 and digits[1] in [1,2,3,4,5]:
+elif digits[0] == 5 and digits[1] in [1, 2, 3, 4, 5]:
     print("MASTERCARD")
 else:
     print("INVALID")
