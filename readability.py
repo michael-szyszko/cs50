@@ -17,9 +17,6 @@ character_count = (
     - text.count('"')
     - text.count(",")
 )
-print(
-    f"word count: {word_count} sentence_count: {sentence_count} character_count: {character_count}"
-)
 
 avg_num_letters_per_100_words = character_count / word_count * 100.0
 avg_num_sentences_per_100_words = sentence_count / word_count * 100.0
