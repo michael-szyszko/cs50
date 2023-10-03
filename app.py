@@ -206,7 +206,8 @@ def register():
             return apology("must provide username", 400)
 
         # Query database for username
-        rows = get_user_by_username(request.form.get("username"))
+        #rows = get_user_by_username(request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         if len(rows) != 0:
             return apology("Username is already taken, please Select another username", 400)
