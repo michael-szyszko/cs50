@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select name="symbol">
+                <option disabled selected>Select Stock</option>
+                {% for portfolio_holding in portfolio_holdings %}
+                    <option value="{{ portfolio_holding['symbol'] }}"> {{ portfolio_holding['symbol'] }} ({{ portfolio_holding['shares'] }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="# of shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
