@@ -36,11 +36,11 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
     portfolio_holdings = get_portfolio_for_user(session["user_id"])
-    user = get_user_by_userid(int(session["user_id"]))
+    user = get_user_by_userid(session["user_id"])
 
     if not user:
-        return apology("user not found", 500)
-    
+        return apology("user not found", session["user_id"])
+
     cash = user[0]["cash"]
     total_value = cash
 
