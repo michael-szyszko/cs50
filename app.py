@@ -221,6 +221,7 @@ def register():
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", request.form.get("username"), generate_password_hash(request.form.get("password")))
 
         # Query database for username to create a session
+        return apology(rows)
         rows = get_user_by_username(request.form.get("username"))
         session["user_id"] = rows[0]["id"]
 
