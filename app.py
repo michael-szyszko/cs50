@@ -95,12 +95,12 @@ def buy():
         if not request.form.get("symbol"):
             return apology("must provide symbol", 400)
 
-        if not request.form.get("shares") or int(request.form.get("shares")) < 1:
-            return apology("must provide share amount greater than 0", 400)
+        if not request.form.get("shares") or not request.form.get("shares").isdecimal() or int(request.form.get("shares")) < 1:
+            return apology("must provide whole share amount greater than 0", 400)
 
         quote = lookup(request.form.get("symbol"))
         if not quote:
-            return apology("stock not found", 404)
+            return apology("stock not found", 400)
 
         user_id = int(session["user_id"])
         #rows = get_user_by_userid(user_id)
