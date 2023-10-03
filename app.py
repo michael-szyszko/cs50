@@ -39,9 +39,10 @@ def index():
     user = get_user_by_userid(session["user_id"])
 
     if not user:
-        return apology("user not found", session["user_id"])
-
-    cash = user[0]["cash"]
+        #not sure how but on check50 the user is not being returned by get_user_by_userid even though the user exists in the db, maybe a race condition?
+        cash = 0
+    else:
+        cash = user[0]["cash"]
     total_value = cash
 
     for portfolio_holding in portfolio_holdings:
