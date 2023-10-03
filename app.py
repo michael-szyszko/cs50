@@ -196,7 +196,7 @@ def quote():
         quote = lookup(request.form.get("symbol"))
 
         if not quote:
-            return apology("stock not found", 404)
+            return apology("stock not found", 400)
 
         return render_template("quote_display.html", symbol = quote["symbol"], name = quote["name"], price = quote["price"])
     else:
@@ -258,7 +258,7 @@ def sell():
         quote = lookup(symbol)
 
         if not quote:
-            return apology("stock not found", 404)
+            return apology("stock not found", 400)
 
         user_id = int(session["user_id"])
         #rows = get_user_by_userid(user_id)
