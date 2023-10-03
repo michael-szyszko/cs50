@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+
+    <h2>Total Cash + Portfolio Holdings: {{ total_value | usd }}</h2>
+    <h2>Cash: {{ cash | usd }}</h2>
+    <h2>Portfolio</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for portfolio_holding in portfolio_holdings %}
+            <tr>
+                <td>{{ portfolio_holding["symbol"] }}</td>
+                <td>{{ portfolio_holding["shares"] }}</td>
+                <td>{{ portfolio_holding["price"] | usd }}</td>
+                <td>{{ (portfolio_holding["shares"] * portfolio_holding["price"]) | usd}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
