@@ -34,9 +34,11 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
+    print(session["user_id"])
     """Show portfolio of stocks"""
     portfolio_holdings = get_portfolio_for_user(session["user_id"])
-    cash = get_user_by_userid(session["user_id"])[0]["cash"]
+    user = get_user_by_userid(session["user_id"])
+    cash = user[0]["cash"]
     total_value = cash
 
     for portfolio_holding in portfolio_holdings:
