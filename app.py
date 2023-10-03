@@ -5,7 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd, get_user_by_username, get_user_by_userid, get_portfolio_holding_for_symbol, get_portfolio_for_user
+from helpers import apology, login_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
@@ -35,14 +35,17 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    portfolio_holdings = get_portfolio_for_user(session["user_id"])
-    user = get_user_by_userid(session["user_id"])
+    #portfolio_holdings = get_portfolio_for_user(session["user_id"])
+    portfolio_holdings = db.execute("SELECT * FROM portfolios WHERE user_id = ?", session["user_id"])
+    #user = get_user_by_userid(session["user_id"])
+    user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
 
-    if not user:
+    #if not user:
         #not sure how but on check50 the user is not being returned by get_user_by_userid even though the user exists in the db, maybe a race condition?
-        cash = 0
-    else:
-        cash = user[0]["cash"]
+        #hypothesis is that I cannot change helper.py
+       # cash = 0
+    #else:
+    cash = user[0]["cash"]
     total_value = cash
 
     for portfolio_holding in portfolio_holdings:
@@ -70,7 +73,8 @@ def add_funds():
         if amount <= 0:
             return apology("add funds amount must be greater than 0", 400)
 
-        cash = get_user_by_userid(session["user_id"])[0]["cash"]
+        #cash = get_user_by_userid(session["user_id"])[0]["cash"]
+        cash = db.execute("SELECT * FROM users WHERE id = ?", (session["user_id"]))[0]["cash"]
         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash + amount, session["user_id"])
 
         # Redirect user to home page
@@ -99,7 +103,8 @@ def buy():
             return apology("stock not found", 404)
 
         user_id = int(session["user_id"])
-        rows = get_user_by_userid(user_id)
+        #rows = get_user_by_userid(user_id)
+        rows = db.execute("SELECT * FROM users WHERE id = ?", user_id)
         price = quote["price"]
         shares = int(request.form.get("shares"))
         symbol = request.form.get("symbol").lower()
@@ -109,7 +114,8 @@ def buy():
             return apology("insufficient funds", 400)
         else:
             db.execute("UPDATE users SET cash = ? WHERE id = ?", float(rows[0]["cash"]) - cost, user_id)
-            rows = get_portfolio_holding_for_symbol(session["user_id"], symbol)
+            #rows = get_portfolio_holding_for_symbol(session["user_id"], symbol)
+            rows = db.execute("SELECT * FROM portfolios WHERE user_id = ? AND symbol = ?", session["user_id"], symbol)
             db.execute("INSERT INTO transactions (user_id, symbol, shares, price, type) VALUES (?, ?, ?, ?, ?)", user_id, symbol, shares, price, "BUY")
             if not rows:
                 db.execute("INSERT INTO portfolios (user_id, symbol, shares) VALUES (?, ?, ?)", user_id, symbol, shares)
@@ -149,7 +155,8 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = get_user_by_username(request.form.get("username"))
+        #rows = get_user_by_username(request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
@@ -259,8 +266,10 @@ def sell():
         for_sale_shares = int(request.form.get("shares"))
 
 
-        portfolio_holdings = get_portfolio_for_user(session["user_id"])
-        cash = get_user_by_userid(session["user_id"])[0]["cash"]
+        #portfolio_holdings = get_portfolio_for_user(session["user_id"])
+        portfolio_holdings = db.execute("SELECT * FROM portfolios WHERE user_id = ?", session["user_id"])
+        #cash = get_user_by_userid(session["user_id"])[0]["cash"]
+        cash = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])[0]["cash"]
 
 
         #get amount of current shares
@@ -285,5 +294,6 @@ def sell():
         # Redirect user to home page
         return redirect("/")
     else:
-        portfolio_holdings = get_portfolio_for_user(session["user_id"])
+        #portfolio_holdings = get_portfolio_for_user(session["user_id"])
+        portfolio_holdings = db.execute("SELECT * FROM portfolios WHERE user_id = ?", session["user_id"])
         return render_template("sell_form.html", portfolio_holdings = portfolio_holdings)
