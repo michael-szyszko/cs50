@@ -210,7 +210,7 @@ def register():
             return apology("must provide password", 400)
 
         # Esnure pass verify match
-        if request.form.get("password") != request.form.get("password_verify"):
+        if request.form.get("password") != request.form.get("confirmation"):
             return apology("password do not match", 400)
 
 
