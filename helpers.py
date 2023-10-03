@@ -47,8 +47,6 @@ def lookup(symbol):
 
     # Prepare API request
     symbol = symbol.upper()
-    print(symbol)
-    print(urllib.parse.quote_plus(symbol))
     end = datetime.datetime.now(pytz.timezone("US/Eastern"))
     start = end - datetime.timedelta(days=7)
 

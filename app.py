@@ -197,7 +197,7 @@ def register():
     if request.method == "POST":
         # Ensure username was submitted
         if not request.form.get("username"):
-            return apology("must provide username", 403)
+            return apology("must provide username", 400)
 
         # Query database for username
         rows = get_user_by_username(request.form.get("username"))
@@ -261,7 +261,6 @@ def sell():
         #get amount of current shares
         current_shares = 0
         for portfolio_holding in portfolio_holdings:
-            print(portfolio_holding["symbol"])
             if portfolio_holding["symbol"] == symbol:
                 current_shares = portfolio_holding["shares"]
 
