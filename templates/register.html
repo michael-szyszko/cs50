@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<section class="flex-1 hero bg-[60%] lg:bg-[70%] bg-center bg-no-repeat" style="background-image: url('/static/img/banner.png')">
+    <div class="w-full">
+
+        <div class="ms-container-wide grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+            <div class="ms-theme-card-light shadow-md col-span-1">
+                <p class="text-card-subheading"> Sign Up Today!</p>
+                <form action="/register" method="post" class="ms-form">
+
+                    <input autocomplete="off" autofocus class="form-input ms-input form-element" id="username"
+                        name="username" placeholder="Username" type="text">
+
+
+                    <input class="form-input ms-input form-element" id="password" name="password" placeholder="Password"
+                        type="password">
+
+
+                    <input class="form-input ms-input form-element" id="confirmation" name="confirmation"
+                        placeholder="Confirm password " type="password">
+
+                    <button class="ms-button-brand form-element" type="submit">
+                        <span class="ms-icon-sm material-symbols-outlined">how_to_reg</span>
+                        <span>Register</span>
+                    </button>
+
+                </form>
+            </div>
+            <div class="spacer col-span-1 lg:min-h-[500px]">
+
+                <p class="text-card-overtitle">  </p>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

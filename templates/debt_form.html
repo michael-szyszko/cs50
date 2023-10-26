@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Debt
+{% endblock %}
+
+{% block main %}
+
+<section class="py-12">
+    <div class="ms-container-wide">
+
+        <div class="ms-theme-card">
+            <h1>
+                <span class="text-card-heading text-white"> Add a Debt</span>
+            </h1>
+            <p class="text-card-body text-gs-50"> Specify the start date, a name, along with the amount, interest rate
+                and minium payment for debt then click submit! </p>
+            <form action="/debt" method="post" class="ms-form wide">
+
+                <input autofocus class="form-input ms-input form-element" id="date" name="date" type="month"
+                    value="{{year}}-{{month}}">
+
+                <input autofocus class="form-input ms-input form-element" id="name" name="name" placeholder="Debt name"
+                    type="text">
+
+                <input autofocus class="form-input ms-input form-element" id="amount" name="amount"
+                    placeholder="Debt amount" type="number">
+
+                <input autofocus class="form-input ms-input form-element" id="rate" name="rate" placeholder="% APR"
+                    type="float">
+
+
+                <input autofocus class="form-input ms-input form-element" id="minimum_payment" name="minimum_payment"
+                    placeholder="Minimum payment" type="number">
+
+                <button class="ms-button-accent form-element" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
