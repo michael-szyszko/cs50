@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+    body {
+        box-sizing: border-box;
+
+    }
+
+    .inactive {
+        @apply opacity-0 pointer-events-none overflow-hidden p-0 !important;
+        line-height: 0 !important;
+    }
+
+    .site-app {
+        min-height: 100vh !important;
+        @apply flex flex-col items-stretch !important;
+    }
+
+    .main-site {
+        @apply flex flex-col items-stretch flex-1 !important;
+    }
+
+    /* override tailwind collapse */
+
+    .collapse {
+        visibility: unset !important;
+    }
+
+    .ms-form {
+        @apply mx-auto w-[270px] max-w-full flex flex-col items-center gap-4 !important;
+    }
+
+    .ms-form.wide {
+        @apply w-[320px] !important;
+    }
+
+
+    .ms-form .form-element {
+        @apply w-full !important;
+    }
+
+    .ms-form .ms-input {
+        @apply  rounded !important;
+    }
+    .ms-form .ms-select {
+        @apply rounded !important;
+    }
+
+    .navbar-collapse .nav-item .nav-link {
+        @apply text-slate-800;
+    }
+
+    .navbar-collapse .navbar-nav {
+        @apply gap-y-4 gap-x-5;
+    }
+
+    .ms-container-wide {
+        @apply px-6 sm:px-8 md:px-12 lg:max-w-[1500px] lg:mx-auto;
+    }
+
+    .ms-container-full {
+        @apply px-6 sm:px-8 md:px-12 lg:max-w-[2200px] lg:mx-auto;
+    }
+
+    a.ms-link {
+        @apply inline-flex items-center gap-2 hover:text-brand-500 !important;
+    }
+
+    .theme-bar {
+       @apply w-[1px] bg-slate-500 h-6;
+    }
+
+    .theme-divider {
+        @apply w-full h-[1px] bg-slate-500 border-t;
+    }
+
+    .ms-icon-sm {
+        @apply text-xl leading-5  !important;
+    }
+    .ms-icon {
+        @apply text-2xl leading-6  !important;
+    }
+
+    .ms-icon-lg {
+        @apply text-4xl leading-9 !important;
+    }
+
+    button.ms-button-brand {
+        @apply flex items-center justify-center gap-2 bg-gs-900 hover:bg-gs-700 px-5 py-2 text-gs-50 font-brand font-light text-sm rounded !important;
+    }
+
+    button.ms-button-accent {
+        @apply flex items-center justify-center gap-2 bg-accent-400 hover:bg-accent-300 px-6 py-4 text-gs-900 font-brand font-bold text-base rounded !important;
+    }
+
+    .ms-theme-card {
+        @apply flex flex-col items-center gap-12 rounded-xl bg-gradient-to-r from-brand-500 to-gs-500 p-8 lg:p-16 shadow text-center;
+    }
+
+    .ms-theme-card-light {
+        @apply flex flex-col gap-8 rounded-xl bg-gradient-to-r from-brand-200 to-gs-200 p-8 lg:p-16 shadow text-center;
+    }
+
+    .text-logo {
+        @apply font-brand text-4xl font-bold;
+    }
+
+    .text-card-jumbo-heading {
+        @apply font-brand leading-8 text-4xl md:text-5xl lg:text-7xl font-bold;
+    }
+
+    .text-card-heading {
+        @apply font-brand text-4xl lg:text-6xl lg:leading-12 font-bold;
+    }
+
+    .text-card-subheading {
+        @apply font-brand text-3xl font-bold;
+    }
+
+    .text-card-overtitle {
+        @apply font-brand text-2xl font-bold;
+     }
+
+    .text-card-body {
+        @apply text-lg lg:text-xl font-normal;
+    }
+
+    .text-type-body {
+        @apply text-sm font-normal;
+    }
+
+    .ms-table th, .ms-table td {
+        @apply min-w-[250px] first:min-w-[unset] first:whitespace-nowrap !important;
+    }
+
+    .ms-table tbody tr {
+        @apply hover:bg-accent-100;
+    }
+
+    .ms-table th {
+        @apply capitalize p-4 pl-8 pt-0 pb-3 text-gs-800 text-left !important;
+    }
+    .ms-table tr td {
+        @apply border-b border-gs-300 p-2 pl-8 text-gs-800 !important;
+    }
+
+    .sticky-thead {
+        position: -webkit-sticky; /* Safari */
+        @apply border-b border-gs-300 sticky top-0 bg-brand-50 py-4 !important;
+    }
+}
+
+
