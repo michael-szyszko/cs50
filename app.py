@@ -246,3 +246,6 @@ def extra_payment():
     else:
         extra_payment = db.get_extra_payment_by_user_id(session["user_id"])
         return render_template("extra_payment.html", extra_payment=extra_payment)
+
+if __name__ == '__main__':
+    app.run()

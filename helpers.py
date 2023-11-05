@@ -1,7 +1,5 @@
 import datetime
 
-
-from cs50 import SQL
 from datetime import datetime
 from flask import redirect, render_template, session, request
 from functools import wraps
